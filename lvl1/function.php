@@ -4,13 +4,13 @@ function prichody(){
     $log = fopen("log.txt", "a") or die("Unable to open file!");
     $time = date("H:i");
 
-    if($time>="08"){
+    if($time>="08"&&$time<="19:59"){
         $time=$time." Meskanie\n";
         echo $time;
     }
-//    if($time){
-//
-//    }
+    if($time>="20"&&$time<="24"){
+        die("Nemozne");
+    }
     fwrite($log, $time);
     fclose($log);
 }
