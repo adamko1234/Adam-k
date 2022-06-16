@@ -1,18 +1,24 @@
 <?php
-function prichody(){
-    date_default_timezone_set("Europe/Bratislava");
-    $log = fopen("log.txt", "a") or die("Unable to open file!");
-    $time = date("H:i");
-
+date_default_timezone_set("Europe/Bratislava");
+function neskoro(){
+$time = date("H:i");
     if($time>="08"&&$time<="19:59"){
-        $time=$time." Meskanie\n";
-        echo $time;
+        echo file_put_contents("log.txt", "Meskanie ".$time."\n", FILE_APPEND);
     }
     if($time>="20"&&$time<="24"){
         die("Nemozne");
     }
-    fwrite($log, $time);
-    fclose($log);
+    function prichod(){
+    $time = date("H:i");
+        if($time<="07:59"){
+            echo file_put_contents("log.txt", "Prichod ".$time."\n", FILE_APPEND);
+        }
+    }
+    function vypislogu(){
+        echo file_get_contents("log.txt.");
+    }
 }
-echo prichody();
+echo neskoro();
+echo prichod();
+echo vypislogu();
 ?>
