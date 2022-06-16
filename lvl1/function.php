@@ -14,12 +14,13 @@ function prichod(){
     $time = date("H:i");
     if($time<="07:59"){
         echo file_put_contents("log.txt", "Prichod ".$time."\n", FILE_APPEND);
+    } else {
+        Neskoro();
     }
 }
 function vypislogu(){
         echo file_get_contents("log.txt.");
 }
-echo neskoro();
 echo prichod();
 echo vypislogu();
 ?>
