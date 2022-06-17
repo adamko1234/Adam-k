@@ -9,14 +9,14 @@ function neskoro($data){
         die("Nemozne");
     }
 }
-function prichod($data1){
+function prichod($data){
     $time = date("H:i");
     if($time<="07:59"){
-        echo file_put_contents("log.txt", $data1 . " " . $time . "\n", FILE_APPEND);
+        echo file_put_contents("log.txt", $data . " " . $time . "\n", FILE_APPEND);
     }
 }
-function vypislogu($data2){
-    echo file_get_contents("log.txt.",$data2);
+function vypislogu($data){
+    echo file_get_contents("log.txt.",$data);
 }
 
 echo neskoro("Meskanie");
