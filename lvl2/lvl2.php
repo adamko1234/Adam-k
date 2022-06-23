@@ -2,9 +2,9 @@
 <body>
 
 
-<form action="meno.php" method="post">
-Name: <input type="text" name="name">
-<input type="submit">
+<form action="meno.php" method="GET">
+    <input type="text" name="name">
+    <button type="submit">Submit</button>
 
 </form>
 
