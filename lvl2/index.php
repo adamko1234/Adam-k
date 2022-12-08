@@ -1,7 +1,10 @@
 <?php
-class Api{
-    public function api(){
-    include "prichody.php";
-        Prichody::getData();
+Class neviem{
+    function nieco(){
+        $time = date("H:i");
+        if ($time <= "10:59"){
+            Prichody::getData();
+            echo "Prichod: ".$prichody = include'prichody.php';
+        }
     }
 }

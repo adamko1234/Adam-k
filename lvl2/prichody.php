@@ -1,16 +1,18 @@
 <?php
-class Prichody {
-    public function getData(){
-    include 'prichody.json';
-        $prichody = json_decode(file_get_contents("prichody.json"),true);
-        if("prichody.json"==null){
+class Prichody
+{
+    public function getData()
+    {
+        $time = date("H:i");
+        include 'prichody.json';
+        $prichody = json_decode(file_get_contents("prichody.json"), true);
+        if ("prichody.json" == null) {
             return [];
-        }
-        Prichody::putData($prichody);
-    }
+        } else {
 
-    public function putData($prichody){
-        $meno = $_POST['name'];
-        file_put_contents("prichody.json",$meno. json_encode($prichody));
+            return json_encode($prichody);
+        }
     }
 }
+
+

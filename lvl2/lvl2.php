@@ -7,7 +7,7 @@ class Prichody {
         $time = date("H:i");
         $studenti = json_decode(file_get_contents("studenti.json"), true);
         $prichody = json_decode(file_get_contents("prichody.json"), true);
-//        $i = count([$studenti]);
+        $i = count([$studenti]);
         $meno = $_POST['name'];
         if ($studenti == null) {
             $studenti = [$meno];
@@ -19,11 +19,13 @@ class Prichody {
         } else {
             array_push($prichody, $time);
         }
-        if ($time <= "07:59") {
+        if ($time <= "21:59") {
             file_put_contents("prichody.json", json_encode($prichody));
-            foreach ($prichody as $prichod) {
-                echo "Prichod: " . "$meno" . " " . "$prichod<br>";
+            foreach($studenti as $i => $meno) {
+                echo "$i=>$meno" ;
+                echo "<br>";
             }
+
         } else {
             Prichody::neskoro($prichody);
         }
@@ -34,13 +36,14 @@ class Prichody {
     {
         $time = date("H:i");
         $meno = $_POST['name'];
-        if ($time <= "19:59") {
+        if ($time <= "22:59") {
             file_put_contents("prichody.json", json_encode($prichody));
-            foreach ($prichody as $prichod) {
-                echo "Meskanie: " . "$meno" . " " . "$prichod<br>";
-            }
+//            foreach($studenti as $i => $meno){
+//                echo "Meskanie: "."$i=>$meno ". $time;
+//                echo "<br>";
+//            }
         }
-        if ($time >= "20" && $time <= "24") {
+        if ($time >= "23" && $time <= "24") {
             die($_POST['name'] . " Nemozne ");
         }
     }

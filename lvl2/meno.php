@@ -2,7 +2,7 @@
 <body>
 
 
-<form action="lvl2.php" method="POST">
+<form action="index.php" method="POST">
     <input type="text" name="name">
     <button type="submit">Submit</button>
 </form>
