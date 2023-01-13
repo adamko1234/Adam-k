@@ -1,18 +1,13 @@
 <?php
+
 class Prichody
 {
-    public function getData()
+    public function getTime()
     {
-        $time = date("H:i");
-        include 'prichody.json';
-        $prichody = json_decode(file_get_contents("prichody.json"), true);
-        if ("prichody.json" == null) {
-            return [];
-        } else {
-
-            return json_encode($prichody);
-        }
+        return json_decode(file_get_contents("prichody.json"), true);
+    }
+    public function putTime()
+    {
+        json_encode(file_put_contents("prichody.json"));
     }
 }
-
-
