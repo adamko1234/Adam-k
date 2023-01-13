@@ -1,19 +1,21 @@
 <?php
 include'meno.php';
-index();
+$jsonTime = arrivals();
+$jsonStudent = students();
+index($jsonTime, $jsonStudent);
 arrivals();
 students();
 note();
 
-function arrivals($jsonTime)
+function arrivals()
 {
     $arrivals = include 'prichody.php';
-    $jsonTime = json_decode($arrivals);
+    return json_decode($arrivals);
 }
-function students($jsonStudent)
+function students()
 {
     $students = include 'studenti.php';
-    $jsonStudent = json_decode($students);
+    return json_decode($students);
 }
 function index($jsonTime,$jsonStudent)
 {
@@ -30,6 +32,7 @@ function index($jsonTime,$jsonStudent)
     } else {
         array_push($jsonTime, $time->putTime());
     }
+    saveData($jsonStudent,$jsonTime);
 }
 function note($jsonStudent)
 {
